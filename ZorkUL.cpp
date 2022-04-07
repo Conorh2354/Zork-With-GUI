@@ -182,18 +182,28 @@ bool ZorkUL::processCommand(Command command) {
 /** COMMANDS **/
 string ZorkUL::map() {
     string output;
-    output +=  "[h] --- [f] --- [g]" ;
-    output +=  "         |         " ;
-    output +=  "         |         " ;
-    output +=  "[c] --- [a] --- [b]" ;
-    output +=  "         |         " ;
-    output +=  "         |         " ;
-    output +=  "[i] --- [d] --- [e]" ;
-    output +=  "         |         " ;
-    output +=  "         |         " ;
-    output +=  "        [j]        " ;
+    output +=  "Here is the map:\n";
+    output +=  "[h] --- [f] --- [g]\n"  ;
+    output +=  "             |         \n" ;
+    output +=  "[c] --- [a] --- [b]\n" ;
+    output +=  "             |         \n" ;
+    output +=  "[i] --- [d] --- [e]\n" ;
+    output +=  "             |         \n" ;
+    output +=  "           [j]        \n" ;
+    output +=  "You are in " + currentRoom->longDescription() ;
     return output;
 }
+
+string ZorkUL::playWordle() {
+
+    string output;
+    output +=  "Here is a link to play the game worldle\n";
+    output +=  "https://www.nytimes.com/games/wordle/index.html\n"  ;
+    output +=  "I wasn't able to get my wordle code to work so I thought this might be the next best thing!";
+    return output;
+
+}
+
 string ZorkUL::printHelp() {
     //cout << "valid inputs are; " << endl;
     return "Click the button that you would like to do,"

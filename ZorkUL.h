@@ -34,6 +34,7 @@ public:
     string viewCharacterInfo();
     string viewItems();
     Room getCurrentRoom();
+    string playWordle();
 };
 
 #endif /*ZORKUL_H_*/
