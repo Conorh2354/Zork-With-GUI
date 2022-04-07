@@ -1,4 +1,4 @@
-/*#ifndef CHARACTER_H_
+#ifndef CHARACTER_H_
 #define CHARACTER_H_
 #include "ZorkUL.h"
 
@@ -7,13 +7,13 @@ using namespace std;
 #include <vector>
 using std::vector;
 
-
 class Character {
+    friend class MainWindow;
+
 private:
 	string description;
-	 vector < string > itemsInCharacter;
-public:
-	void addItems(string Item);
+    vector < string > itemsInCharacter;
+
 
 
 
@@ -23,6 +23,21 @@ public:
 	string shortDescription();
 	string longDescription();
 
+
+
+
+
+
+
+    void addItems(string Item);
+
+
+
+
+
+
+
+
 };
 
-#endif /*CHARACTER_H_*/
+#endif

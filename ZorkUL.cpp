@@ -1,16 +1,13 @@
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 #include "ZorkUL.h"
 
-int main(int argc, char argv[]) {
-	ZorkUL temp;
-	temp.play();
-	return 0;
-}
 
 ZorkUL::ZorkUL() {
 	createRooms();
+    srand(time(0));
 }
 
 void ZorkUL::createRooms()  {
@@ -43,13 +40,25 @@ void ZorkUL::createRooms()  {
     i->setExits(NULL, d, NULL, NULL);
     j->setExits(d, NULL, NULL, NULL);
 
+    rooms.push_back(*a);
+    rooms.push_back(*b);
+    rooms.push_back(*c);
+    rooms.push_back(*d);
+    rooms.push_back(*e);
+    rooms.push_back(*f);
+    rooms.push_back(*g);
+    rooms.push_back(*h);
+    rooms.push_back(*i);
+    rooms.push_back(*j);
+
         currentRoom = a;
 }
 
 /**
  *  Main play routine.  Loops until end of play.
  */
-void ZorkUL::play() {
+
+/*void ZorkUL::play() {
 	printWelcome();
 
 	// Enter the main command loop.  Here we repeatedly read commands and
@@ -67,13 +76,20 @@ void ZorkUL::play() {
 	}
 	cout << endl;
 	cout << "end" << endl;
-}
+}*/
 
-void ZorkUL::printWelcome() {
-	cout << "start"<< endl;
+string ZorkUL::printWelcome() {
+    /*
+    cout << "start"<< endl;
 	cout << "info for help"<< endl;
 	cout << endl;
 	cout << currentRoom->longDescription() << endl;
+    */
+    return "start \ninfo for help\n" + currentRoom->longDescription();
+}
+
+string ZorkUL::printEnd() {
+    return "end";
 }
 
 /**
@@ -81,6 +97,7 @@ void ZorkUL::printWelcome() {
  * If this command ends the ZorkUL game, true is returned, otherwise false is
  * returned.
  */
+/*
 bool ZorkUL::processCommand(Command command) {
 	if (command.isUnknown()) {
 		cout << "invalid input"<< endl;
@@ -106,8 +123,16 @@ bool ZorkUL::processCommand(Command command) {
 
 		}
 
-	else if (commandWord.compare("go") == 0)
+    else if (commandWord.compare("teleport") == 0)
+    {
+       teleport();
+    }
+
+
+
+    else if (commandWord.compare("go") == 0){
 		goRoom(command);
+    }
 
     else if (commandWord.compare("take") == 0)
     {
@@ -132,7 +157,7 @@ bool ZorkUL::processCommand(Command command) {
     {
 
     }
-    /*
+
     {
     if (!command.hasSecondWord()) {
 		cout << "incomplete input"<< endl;
@@ -143,22 +168,46 @@ bool ZorkUL::processCommand(Command command) {
             itemsInRoom.push_Back;
         }
     }
-*/
+
     else if (commandWord.compare("quit") == 0) {
 		if (command.hasSecondWord())
 			cout << "overdefined input"<< endl;
 		else
-			return true; /**signal to quit*/
+            return true; signal to quit
 	}
-	return false;
+    return false;
 }
+*/
+
 /** COMMANDS **/
-void ZorkUL::printHelp() {
-	cout << "valid inputs are; " << endl;
-	parser.showCommands();
+string ZorkUL::map() {
+    string output;
+    output +=  "[h] --- [f] --- [g]" ;
+    output +=  "         |         " ;
+    output +=  "         |         " ;
+    output +=  "[c] --- [a] --- [b]" ;
+    output +=  "         |         " ;
+    output +=  "         |         " ;
+    output +=  "[i] --- [d] --- [e]" ;
+    output +=  "         |         " ;
+    output +=  "         |         " ;
+    output +=  "        [j]        " ;
+    return output;
+}
+string ZorkUL::printHelp() {
+    //cout << "valid inputs are; " << endl;
+    return "Click the button that you would like to do,"
+           " eg if you want to go north then click go north ";
 
 }
 
+string ZorkUL::teleport() {
+    currentRoom = &rooms.at((int) rand() % rooms.size());
+
+    return currentRoom->longDescription();
+   }
+
+/*
 void ZorkUL::goRoom(Command command) {
 	if (!command.hasSecondWord()) {
 		cout << "incomplete input"<< endl;
@@ -177,6 +226,7 @@ void ZorkUL::goRoom(Command command) {
 		cout << currentRoom->longDescription() << endl;
 	}
 }
+*/
 
 string ZorkUL::go(string direction) {
 	//Make the direction lowercase
@@ -190,4 +240,11 @@ string ZorkUL::go(string direction) {
 		currentRoom = nextRoom;
 		return currentRoom->longDescription();
 	}
+}
+
+string ZorkUL::viewItems() {
+    return currentRoom->displayItem();
+}
+Room ZorkUL::getCurrentRoom() {
+    return *currentRoom;
 }

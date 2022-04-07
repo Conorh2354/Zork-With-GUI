@@ -6,6 +6,7 @@ Room::Room(string description) {
 	this->description = description;
 }
 
+
 void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
 	if (north != NULL)
 		exits["north"] = north;
@@ -15,6 +16,19 @@ void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
 		exits["south"] = south;
 	if (west != NULL)
 		exits["west"] = west;
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 string Room::shortDescription() {
@@ -25,12 +39,14 @@ string Room::longDescription() {
 	return "room = " + description + ".\n" + displayItem() + exitString();
 }
 
+
 string Room::exitString() {
 	string returnString = "\nexits =";
 	for (map<string, Room*>::iterator i = exits.begin(); i != exits.end(); i++)
 		// Loop through map
 		returnString += "  " + i->first;	// access the "first" element of the pair (direction as a string)
 	return returnString;
+
 }
 
 Room* Room::nextRoom(string direction) {
@@ -39,6 +55,10 @@ Room* Room::nextRoom(string direction) {
 		return NULL; // if exits.end() was returned, there's no room in that direction.
 	return next->second; // If there is a room, remove the "second" (Room*)
 				// part of the "pair" (<string, Room*>) and return it.
+
+
+
+
 }
 
 void Room::addItem(Item *inItem) {
@@ -61,10 +81,19 @@ string Room::displayItem() {
             }
         }
     return tempString;
+
+
+
+
+
+
+
     }
 
 int Room::numberOfItems() {
     return itemsInRoom.size();
+
+
 }
 
 int Room::isItemInRoom(string inString)

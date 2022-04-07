@@ -2,29 +2,39 @@
 #define ZORKUL_H_
 
 #include "Command.h"
-#include "Parser.h"
+//#include "Parser.h"
 #include "Room.h"
 #include "item.h"
+#include "weapon.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class ZorkUL {
 private:
-	Parser parser;
+    vector<Room> rooms;
 	Room *currentRoom;
 	void createRooms();
-	void printWelcome();
+    //void printWelcome();
 	bool processCommand(Command command);
-	void printHelp();
 	void goRoom(Command command);
     void createItems();
     void displayItems();
 
 public:
-	ZorkUL();
-	void play();
-	string go(string direction);
+    ZorkUL();
+    void play();
+    string printWelcome();
+    string printHelp();
+    string printEnd();
+    string go(string direction);
+    string teleport();
+    string map();
+    string viewCharacterInfo();
+    string viewItems();
+    Room getCurrentRoom();
 };
 
 #endif /*ZORKUL_H_*/
+
