@@ -1,5 +1,4 @@
 #include <iostream>
-//#include <time.h>
 
 using namespace std;
 #include "ZorkUL.h"
@@ -7,7 +6,7 @@ using namespace std;
 
 ZorkUL::ZorkUL() {
 	createRooms();
-   // srand(time(0));
+
 }
 
 void ZorkUL::createRooms()  {
@@ -46,6 +45,17 @@ void ZorkUL::createRooms()  {
     i->setExits(NULL, d, NULL, NULL);
     j->setExits(d, NULL, NULL, NULL);
 
+    rooms.push_back(*a);
+    rooms.push_back(*b);
+    rooms.push_back(*c);
+    rooms.push_back(*d);
+    rooms.push_back(*e);
+    rooms.push_back(*f);
+    rooms.push_back(*g);
+    rooms.push_back(*h);
+    rooms.push_back(*i);
+    rooms.push_back(*j);
+
     currentRoom = f;
 }
 
@@ -81,7 +91,7 @@ string ZorkUL::printWelcome() {
 	cout << currentRoom->longDescription() << endl;
     */
     return "Hello Gamer, You have one mission! \nYou have to go outside \n\n"
-           "Click the \"How to play\" button for help!\n\n" + currentRoom->longDescription();
+           "Click the \"How to play\" button for help!" + currentRoom->longDescription();
 }
 
 string ZorkUL::printEnd() {
@@ -190,6 +200,7 @@ string ZorkUL::printMap() {
     output +=  "\n" ;
     return output;
 }
+
 string ZorkUL::printHelp() {
     //cout << "valid inputs are; " << endl;
     return "Click the button that you would like to do,"
@@ -202,7 +213,6 @@ string ZorkUL::printWordle() {
     return "I couldn't get my wordle code to work, so heres a link to the wordle site: https://www.nytimes.com/games/wordle/index.html" ;
 
 }
-
 
 
 string ZorkUL::teleport() {
@@ -249,6 +259,7 @@ string ZorkUL::go(string direction) {
 string ZorkUL::viewItems() {
     return currentRoom->displayItem();
 }
+
 Room ZorkUL::getCurrentRoom() {
     return *currentRoom;
 }

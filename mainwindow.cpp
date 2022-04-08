@@ -52,10 +52,7 @@ void MainWindow::goRoom(string direction)
     if (direction == "teleport")
         {
             ui->textEdit->append(QString::fromStdString(zork->teleport() + "\n"));
-            if (zork->getCurrentRoom().description == "outside")
-            {
-                endGameState();
-            }
+
         }
         else
         {
