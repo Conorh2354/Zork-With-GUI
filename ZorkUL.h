@@ -5,10 +5,8 @@
 //#include "Parser.h"
 #include "Room.h"
 #include "item.h"
-#include "weapon.h"
 #include <iostream>
 #include <string>
-#include <vector>
 using namespace std;
 
 class ZorkUL {
@@ -18,6 +16,7 @@ private:
 	void createRooms();
     //void printWelcome();
 	bool processCommand(Command command);
+    //void printHelp();
 	void goRoom(Command command);
     void createItems();
     void displayItems();
@@ -30,11 +29,11 @@ public:
     string printEnd();
     string go(string direction);
     string teleport();
-    string map();
-    string viewCharacterInfo();
+    string printMap();
+    string printWordle();
     string viewItems();
     Room getCurrentRoom();
-    string playWordle();
+    string printInventory();
 };
 
 #endif /*ZORKUL_H_*/

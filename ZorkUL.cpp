@@ -1,5 +1,5 @@
 #include <iostream>
-#include <time.h>
+//#include <time.h>
 
 using namespace std;
 #include "ZorkUL.h"
@@ -7,26 +7,32 @@ using namespace std;
 
 ZorkUL::ZorkUL() {
 	createRooms();
-    srand(time(0));
+   // srand(time(0));
 }
 
 void ZorkUL::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
-	a = new Room("a");
-        a->addItem(new Item("x", 1, 11));
-        a->addItem(new Item("y", 2, 22));
-	b = new Room("b");
-        b->addItem(new Item("xx", 3, 33));
-        b->addItem(new Item("yy", 4, 44));
-	c = new Room("c");
-	d = new Room("d");
-	e = new Room("e");
-	f = new Room("f");
-	g = new Room("g");
-	h = new Room("h");
-	i = new Room("i");
-    j = new Room("j");
+    a = new Room("in the hall, \"I guess I should go downstairs\"");
+
+
+    b = new Room("in your parents room, \"They always give out about my messy room but theres is worse!\" ");
+
+    c = new Room("outside your sisters room,\n\"I'd better not go in here, she'd just scream at me anyways\"");
+
+    d = new Room("in the porch,\n\"I can see the outside, if I keep going this way I can go outside or maybe I should go back to my room\"");
+
+    e = new Room("in the sittting room,\n\"I could always just in stay here and turn on my xbox\"");
+
+    f = new Room("in your bedroom,\n\"Okay my bedroom, maybe I should turn my computer back on and play some games\"");
+    f->addItem(new Item("Your phone", 1, 11));
+    g = new Room("in your closet,\n\"I remember I got stuck in here before\"");
+
+    h = new Room("in your Bathroom,\n\"I dont need the bathroom right now\"");
+
+    i = new Room("in the kitchen,\n\"I'm not hungry right now\"");
+
+    j = new Room("outside");
 
 //             (N, E, S, W)
 	a->setExits(f, b, d, c);
@@ -40,18 +46,7 @@ void ZorkUL::createRooms()  {
     i->setExits(NULL, d, NULL, NULL);
     j->setExits(d, NULL, NULL, NULL);
 
-    rooms.push_back(*a);
-    rooms.push_back(*b);
-    rooms.push_back(*c);
-    rooms.push_back(*d);
-    rooms.push_back(*e);
-    rooms.push_back(*f);
-    rooms.push_back(*g);
-    rooms.push_back(*h);
-    rooms.push_back(*i);
-    rooms.push_back(*j);
-
-        currentRoom = a;
+    currentRoom = f;
 }
 
 /**
@@ -85,7 +80,8 @@ string ZorkUL::printWelcome() {
 	cout << endl;
 	cout << currentRoom->longDescription() << endl;
     */
-    return "start \ninfo for help\n" + currentRoom->longDescription();
+    return "Hello Gamer, You have one mission! \nYou have to go outside \n\n"
+           "Click the \"How to play\" button for help!\n\n" + currentRoom->longDescription();
 }
 
 string ZorkUL::printEnd() {
@@ -110,16 +106,16 @@ bool ZorkUL::processCommand(Command command) {
 
 	else if (commandWord.compare("map") == 0)
 		{
-        cout << "[h] --- [f] --- [g]" << endl;
-		cout << "         |         " << endl;
-        cout << "         |         " << endl;
-		cout << "[c] --- [a] --- [b]" << endl;
-		cout << "         |         " << endl;
-		cout << "         |         " << endl;
-		cout << "[i] --- [d] --- [e]" << endl;
-        cout << "         |         " << endl;
-        cout << "         |         " << endl;
-        cout << "        [j]        " << endl;
+        cout << "[Your Bathroom] --- [Your Bedroom] --- [Your closet]" << endl;
+        cout << "                          |         " << endl;
+        cout << "                          |         " << endl;
+        cout << "[Sisters room] --- [The stairs] --- [parents room]" << endl;
+        cout << "                          |         " << endl;
+        cout << "                          |         " << endl;
+        cout << "[Kitchen]      --- [The porch] --- [Sttting Room]" << endl;
+        cout << "                          |         " << endl;
+        cout << "                          |         " << endl;
+        cout << "                   [The outside]        " << endl;
 
 		}
 
@@ -180,36 +176,34 @@ bool ZorkUL::processCommand(Command command) {
 */
 
 /** COMMANDS **/
-string ZorkUL::map() {
+string ZorkUL::printMap() {
     string output;
-    output +=  "Here is the map:\n";
-    output +=  "[h] --- [f] --- [g]\n"  ;
-    output +=  "             |         \n" ;
-    output +=  "[c] --- [a] --- [b]\n" ;
-    output +=  "             |         \n" ;
-    output +=  "[i] --- [d] --- [e]\n" ;
-    output +=  "             |         \n" ;
-    output +=  "           [j]        \n" ;
-    output +=  "You are in " + currentRoom->longDescription() ;
+    output +=  "[Your Bathroom] --- [Your Bedroom] ---   [Your closet]                \n" ;
+    output +=  "                                                 |                                                                    \n" ;
+    output +=  "[Sisters room]    -----   [The Hall]    -----    [parents room]            \n" ;
+    output +=  "                                                 |                                  \n" ;
+    output +=  "[Kitchen]      -------      [The porch]    ----- [Sttting Room]             \n" ;
+    output +=  "                                                 |                                  \n" ;
+    output +=  "               	          [The outside]                     \n" ;
+
+    output += currentRoom->longDescription();
+    output +=  "\n" ;
     return output;
 }
-
-string ZorkUL::playWordle() {
-
-    string output;
-    output +=  "Here is a link to play the game worldle\n";
-    output +=  "https://www.nytimes.com/games/wordle/index.html\n"  ;
-    output +=  "I wasn't able to get my wordle code to work so I thought this might be the next best thing!";
-    return output;
-
-}
-
 string ZorkUL::printHelp() {
     //cout << "valid inputs are; " << endl;
     return "Click the button that you would like to do,"
            " eg if you want to go north then click go north ";
 
 }
+
+string ZorkUL::printWordle() {
+    //cout << "valid inputs are; " << endl;
+    return "I couldn't get my wordle code to work, so heres a link to the wordle site: https://www.nytimes.com/games/wordle/index.html" ;
+
+}
+
+
 
 string ZorkUL::teleport() {
     currentRoom = &rooms.at((int) rand() % rooms.size());

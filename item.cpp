@@ -9,22 +9,7 @@ Item::Item (string inDescription, int inWeightGrams, float inValue/**, int weapo
 
 Item::Item(string inDescription) {
 	description = inDescription;
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void Item::setWeight(int inWeightGrams)
 {
@@ -33,8 +18,6 @@ void Item::setWeight(int inWeightGrams)
     else
 	   weightGrams = inWeightGrams;
 }
-
-
 
 void Item::setValue(float inValue)
 {

@@ -23,14 +23,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void endGameState();
-    void allRoomItemsCollectedTest();
-     void addItemsToListWidget(vector<Item> item);
-     void printCharacterStats();
+    void addItemsToListWidget(vector<Item> item);
 
 private:
     Ui::MainWindow *ui;
     ZorkUL *zork = new ZorkUL();
     void goRoom(string direction);
+    Character character = *new Character("Joe");
     bool putInInventory;
     void listItems(vector<Item> items, QString description);
 
@@ -46,12 +45,13 @@ private:
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_4_clicked();
-    void on_pushButton_2_clicked();
-    void on_pushButton_5_clicked();
     void on_pushButton_3_clicked();
+    void on_pushButton_5_clicked();
+    void on_pushButton_2_clicked();
     void on_pushButton_6_clicked();
     void on_pushButton_7_clicked();
     void on_pushButton_8_clicked();
-
+    void on_pushButton_9_clicked();
+    void on_pushButton_10_clicked();
 };
 #endif // MAINWINDOW_H

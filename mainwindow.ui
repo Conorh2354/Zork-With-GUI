@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>292</height>
+    <width>813</width>
+    <height>368</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,83 +19,32 @@
      <rect>
       <x>390</x>
       <y>20</y>
-      <width>411</width>
+      <width>401</width>
       <height>121</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="ActionsBox"/>
-   </widget>
-   <widget class="QWidget" name="gridLayoutWidget_3">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>160</y>
-      <width>411</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="MovementBox">
+    <layout class="QGridLayout" name="ActionsBox">
      <item row="0" column="0">
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="0">
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="text">
-          <string>Go West</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string>Go South</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>Go North</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="text">
-          <string>Teleport</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="pushButton_5">
-         <property name="text">
-          <string>Go East</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="pushButton_6">
-         <property name="text">
-          <string>Map</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="pushButton_7">
-         <property name="text">
-          <string>Info</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="pushButton_8">
-         <property name="text">
-          <string>Play Wordle</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QPushButton" name="pushButton_10">
+       <property name="text">
+        <string>Pick Up Item</string>
+       </property>
+      </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="txtStory">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Story</string>
+    </property>
    </widget>
    <widget class="QLabel" name="txtActions">
     <property name="geometry">
@@ -113,8 +62,8 @@
    <widget class="QLabel" name="txtMovement">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>140</y>
+      <x>380</x>
+      <y>150</y>
       <width>61</width>
       <height>16</height>
      </rect>
@@ -126,25 +75,102 @@
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>20</y>
-      <width>371</width>
-      <height>261</height>
+      <width>351</width>
+      <height>331</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>49</width>
-      <height>16</height>
+      <x>390</x>
+      <y>170</y>
+      <width>401</width>
+      <height>181</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Story</string>
-    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="topMargin">
+      <number>9</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>11</number>
+     </property>
+     <property name="horizontalSpacing">
+      <number>7</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>0</number>
+     </property>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="text">
+        <string>Go West</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>Go South</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Go North</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>Teleport</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="text">
+        <string>Go East</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="text">
+        <string>Show Map</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="text">
+        <string>How to Play</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pushButton_8">
+       <property name="text">
+        <string>Play Wordle</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="pushButton_9">
+       <property name="text">
+        <string>Inventory</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
